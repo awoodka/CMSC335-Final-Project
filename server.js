@@ -5,9 +5,11 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
+/*
 require("dotenv").config({
     path: path.resolve(__dirname, "credentialsDontPost/.env"),
 });
+*/
 
 const uri = process.env.MONGO_CONNECTION_STRING;
 const MARKETSTACK_KEY = process.env.MARKETSTACK_ACCESS_KEY;
