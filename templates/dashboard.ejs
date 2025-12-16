@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="/styles.css" />
+    </head>
+    <body>
+        <h1>Dashboard</h1>
+
+        <% if (apiError) { %>
+        <p class="message">API NOTE: <%= apiError %></p>
+        <% } %>
+
+        <p><strong>Cash:</strong> $<%= cash.toFixed(2) %></p>
+        <p><strong>Holdings Value:</strong> $<%= totalMarketValue.toFixed(2) %></p>
+        <p><strong>Total Equity:</strong> $<%= totalEquity.toFixed(2) %></p>
+
+        <table>
+        <tr>
+            <th>Ticker</th><th>Qty</th><th>Avg Buy</th><th>Last Price</th><th>Value</th><th>P/L</th>
+        </tr>
+        <% holdings.forEach(h => { %>
+            <tr>
+            <td><%= h.ticker %></td>
+            <td><%= h.quantity %></td>
+            <td>$<%= h.avgPurchasePrice.toFixed(2) %></td>
+            <td>$<%= h.lastPrice.toFixed(2) %></td>
+            <td>$<%= h.marketValue.toFixed(2) %></td>
+            <td>$<%= h.pnl.toFixed(2) %></td>
+            </tr>
+        <% }) %>
+        </table>
+
+        <hr />
+        <p><a href="/">HOME</a> | <a href="/trade">TRADE</a> | <a href="/market">MARKET</a></p>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Market</title>
+        <link rel="stylesheet" href="/styles.css" />
+    </head>
+    <body>
+        <h1>Market</h1>
+
+        <% if (apiError) { %>
+        <p class="message">API NOTE: <%= apiError %></p>
+        <% } %>
+
+        <table>
+        <tr><th>#</th><th>Ticker</th><th>Open</th><th>Close</th><th>% Change</th></tr>
+        <% rows.forEach((r, i) => { %>
+            <tr>
+            <td><%= i + 1 %></td>
+            <td><%= r.ticker %></td>
+            <td>$<%= r.open.toFixed(2) %></td>
+            <td>$<%= r.close.toFixed(2) %></td>
+            <td><%= r.pct.toFixed(2) %>%</td>
+            </tr>
+        <% }) %>
+        </table>
+
+        <hr />
+        <p><a href="/">HOME</a> | <a href="/dashboard">DASHBOARD</a> | <a href="/trade">TRADE</a></p>
+    </body>
+</html>
